@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff7fb">
+<title>little things ♡ — bestie quiz</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+:root{--paper:#fff9fc;--ink:#382632;--muted:#967d8c;--pink:#ef9fbe;--rose:#cf6e98;--blush:#fbe7ef;--line:#f0dce6;--lilac:#e9e2fb;--shadow:0 24px 80px #8e587514;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:var(--sans);background:var(--paper);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 5% 0%,#fbe2ed 0,transparent 32%),radial-gradient(ellipse at 95% 24%,#eee7fc 0,transparent 29%),radial-gradient(ellipse at 55% 100%,#fff0e9 0,transparent 35%)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:10;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E")}
+a{color:inherit}button,input,textarea,select{font:inherit}button{cursor:pointer}
+.shell{width:min(1120px,92%);margin:auto}.nav{height:86px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #efdce6a6}
+.logo{display:flex;align-items:center;gap:11px;font-size:14px;letter-spacing:.17em;text-transform:uppercase;font-weight:700}.logo-mark{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#f8e2ed;color:#c66d93;font-size:18px}
+.nav-right{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+.hero{position:relative;text-align:center;padding:82px 0 58px;overflow:hidden}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--rose);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700}.eyebrow:before,.eyebrow:after{content:"";width:24px;height:1px;background:#dfa4bd}
+h1{font-family:var(--serif);font-size:clamp(50px,8.2vw,100px);line-height:.99;letter-spacing:-.055em;font-weight:500;margin:24px auto 22px;max-width:900px}
+h1 em{font-weight:500;color:var(--rose);position:relative}h1 em:after{content:"";position:absolute;left:3%;right:0;bottom:-7px;height:10px;background:url("data:image/svg+xml,%3Csvg width='300' height='12' viewBox='0 0 300 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 8 C80 1 175 2 298 6' stroke='%23e9abc4' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.hero-copy{font-size:15px;line-height:1.9;color:var(--muted);max-width:480px;margin:0 auto}
+.hero-sticker{position:absolute;display:grid;place-items:center;pointer-events:none}.sticker-left{left:3%;top:28%;width:86px;height:86px;border:1px solid #eac6d7;border-radius:50%;transform:rotate(-13deg);font-family:var(--serif);font-style:italic;color:#be7898;font-size:14px;line-height:1.25}.sticker-right{right:6%;top:18%;font-size:54px;color:#d7c9f0;transform:rotate(14deg)}
+.intro-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{border:0;border-radius:999px;padding:15px 23px;font-weight:700;font-size:12px;letter-spacing:.035em;transition:transform .2s,box-shadow .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--ink);color:white;box-shadow:0 10px 24px #38263220}.btn-primary:hover{box-shadow:0 14px 28px #3826322c}.btn-light{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 0;overflow:hidden;white-space:nowrap;color:#a17e90;font-size:10px;letter-spacing:.25em;text-transform:uppercase;display:flex;justify-content:space-around;gap:22px}
+.marquee span{flex-shrink:0}.spark{color:#d881a7;font-size:14px}
+.main{padding:62px 0 100px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}.kicker{color:var(--rose);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}.section-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4vw,48px);letter-spacing:-.035em;margin:8px 0 0}.section-note{color:var(--muted);font-size:12px;line-height:1.7;max-width:230px}
+.workspace{display:grid;grid-template-columns:1fr 1.02fr;gap:22px;align-items:start}.panel{background:#ffffffb8;border:1px solid #f0dce6;border-radius:25px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow);backdrop-filter:blur(12px)}.panel-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:23px}.panel-title h3{font-family:var(--serif);font-size:25px;font-weight:500;margin:0}.tiny-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:#fbecf3;padding:8px 10px;border-radius:99px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}.field label{font-size:11px;font-weight:700;color:#755568}.field input,.field textarea,.field select,.question-card input,.question-card select{width:100%;border:1px solid #f0dce6;border-radius:12px;padding:12px 13px;background:#fffafd;color:var(--ink);outline:none;font-size:12px;transition:border .2s,box-shadow .2s}.field input:focus,.field textarea:focus,.field select:focus,.question-card input:focus{border-color:#dc8fb0;box-shadow:0 0 0 3px #f6dfeb}.field textarea{resize:vertical;min-height:76px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.full{grid-column:1/-1}
+.divider{border:0;border-top:1px solid var(--line);margin:22px 0}.add-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.add-row strong{font-size:12px}.text-btn{border:0;background:none;color:var(--rose);font-size:11px;font-weight:700;padding:8px 0}.question-list{display:grid;gap:11px}.question-card{background:#fffafd;border:1px solid var(--line);border-radius:16px;padding:13px}.question-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.question-number{font-size:9px;letter-spacing:.16em;color:var(--rose);font-weight:700;text-transform:uppercase}.delete-btn{border:0;background:none;color:#bca1af;font-size:11px}.question-card input{margin-bottom:7px}.answers-edit{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}.correct-label{display:block;font-size:10px;color:var(--muted);margin:6px 0}.panel-actions{display:grid;gap:9px;margin-top:18px}.panel-actions .btn{width:100%}.microcopy{font-size:10px;line-height:1.7;color:#a48c9a;margin:13px 2px 0}
+.preview-panel{position:sticky;top:20px;overflow:hidden;padding:0;background:#fff;border-radius:25px;border:1px solid #f0dce6;box-shadow:var(--shadow)}.preview-top{height:39px;display:flex;align-items:center;gap:6px;padding:0 15px;background:#fffafd;border-bottom:1px solid var(--line)}.dot{width:6px;height:6px;border-radius:50%;background:#edc8d8}.preview-url{margin-left:8px;font-size:9px;color:#b29ba8;letter-spacing:.04em}.preview-content{padding:36px 25px 29px;text-align:center;min-height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}.preview-content:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,#fbe7ef 0,transparent 70%);top:15px;z-index:0}.preview-inner{position:relative;z-index:1;width:100%}.mini-mark{width:54px;height:54px;border:1px solid #efccdc;border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;color:var(--rose);font-size:25px}.preview-content h3{font-family:var(--serif);font-weight:500;font-size:38px;line-height:1.08;letter-spacing:-.04em;margin:0 auto 15px;max-width:380px}.preview-content p{font-size:11px;line-height:1.8;color:var(--muted);max-width:300px;margin:0 auto 22px}.preview-meta{font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:#b38da1;margin-bottom:23px}.preview-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:13px 17px;font-size:9px;color:#b39ba8;letter-spacing:.1em;text-transform:uppercase}
+.quiz-card{width:100%;text-align:left}.quiz-step{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--rose)}.progress{height:3px;background:#f8e7ef;border-radius:9px;margin:14px 0 24px;overflow:hidden}.progress span{height:100%;display:block;width:0;background:var(--rose);transition:width .3s}.live-question{font-family:var(--serif);font-size:28px;line-height:1.2;letter-spacing:-.025em;margin-bottom:20px}.live-answers{display:grid;gap:8px}.live-answer{border:1px solid var(--line);border-radius:12px;background:#fffafd;text-align:left;padding:13px 14px;font-size:11px;color:var(--ink);transition:all .2s}.live-answer:hover,.live-answer.chosen{border-color:#dc8fb0;background:#fff0f6}.quiz-controls{display:flex;justify-content:space-between;gap:8px;margin-top:20px}.quiz-controls .btn{padding:12px 17px}.result-number{font-family:var(--serif);font-size:78px;color:var(--rose);line-height:1;margin:8px 0}.result-title{font-family:var(--serif);font-size:32px;font-weight:500;margin:8px 0}.result-copy{font-size:12px;line-height:1.8;color:var(--muted)}
+footer{padding:25px 0 35px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#b39ba8;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:13px 19px;border-radius:99px;font-size:12px;z-index:30;box-shadow:var(--shadow);max-width:90%;text-align:center}.hidden{display:none!important}
+@media(max-width:800px){.workspace{grid-template-columns:1fr}.preview-panel{position:relative;top:auto;grid-row:1}.hero{padding:65px 0 48px}.sticker-left{left:0;top:7%;width:60px;height:60px;font-size:10px}.sticker-right{right:1%;top:7%;font-size:35px}.section-head{align-items:start;flex-direction:column}.section-note{max-width:400px}.main{padding-top:45px}}
+@media(max-width:500px){.nav{height:68px}.nav-right{font-size:8px}.hero{padding-top:55px}h1{font-size:54px}.hero-copy{font-size:13px}.sticker-left{display:none}.field-grid,.answers-edit{grid-template-columns:1fr}.preview-content{min-height:410px;padding:28px 19px}.preview-content h3{font-size:33px}.marquee{justify-content:flex-start;padding-left:18px}.btn{padding:14px 18px}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<header class="shell nav">
+  <div class="logo"><span class="logo-mark">♡</span> little things</div>
+  <div class="nav-right">a tiny corner of friendship ✳</div>
+</header>
+<section class="shell hero">
+  <div class="hero-sticker sticker-left">made with<br>love & care</div>
+  <div class="hero-sticker sticker-right">✳</div>
+  <div class="eyebrow">the bestie project</div>
+  <h1>Some things are<br>better <em>together.</em></h1>
+  <p class="hero-copy">Маленькие воспоминания, ваши смешные приколы и вопросы, на которые знает ответ только настоящая подружка.</p>
+  <div class="intro-actions">
+    <button class="btn btn-primary" id="scrollBuilder">Создать свою викторину ↗</button>
+    <button class="btn btn-light" id="tryDemo">Попробовать демо</button>
+  </div>
+</section>
+<div class="marquee"><span>little memories <b class="spark">✳</b></span><span>inside jokes <b class="spark">♡</b></span><span>just us <b class="spark">✳</b></span><span>bestie energy <b class="spark">♡</b></span><span>little memories <b class="spark">✳</b></span></div>
+<main class="shell main" id="builder">
+  <div class="section-head">
+    <div><div class="kicker">01 / make it yours</div><h2>Создай вашу историю.</h2></div>
+    <div class="section-note">Меняй каждую мелочь. Этот маленький сайт — полностью твой.</div>
+  </div>
+  <div class="workspace">
+    <section class="panel">
+      <div class="panel-title"><h3>Настройки</h3><span class="tiny-label">your edition</span></div>
+      <div class="field"><label for="title">Название викторины</label><input id="title" value="Насколько ты моя bestie?"></div>
+      <div class="field-grid">
+        <div class="field"><label for="creator">Подпись от тебя</label><input id="creator" value="с любовью, твоя подружка"></div>
+        <div class="field"><label for="theme">Цветовая палитра</label><select id="theme"><option value="pink">Cherry blossom</option><option value="lilac">Lavender dream</option><option value="peach">Peach milk</option><option value="sage">Sage & cream</option><option value="night">Berry night</option></select></div>
+        <div class="field full"><label for="intro">Приветствие</label><textarea id="intro">Проверим, сколько маленьких деталей обо мне ты помнишь? ♡</textarea></div>
+      </div>
+      <hr class="divider">
+      <div class="add-row"><strong>Вопросы и ответы</strong><button class="text-btn" id="add">＋ Добавить вопрос</button></div>
+      <div class="question-list" id="questions"></div>
+      <div class="panel-actions">
+        <button class="btn btn-primary" id="play">Посмотреть викторину ↗</button>
+        <button class="btn btn-light" id="copyLink">Скопировать ссылку на викторину</button>
+      </div>
+      <p class="microcopy">Подсказка: сначала опубликуй файл в интернете, например на GitHub Pages. После этого кнопка создаст ссылку с твоими вопросами и дизайном.</p>
+    </section>
+    <section class="preview-panel" aria-label="Предпросмотр викторины">
+      <div class="preview-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="preview-url">littlethings.local / your-quiz</span></div>
+      <div class="preview-content" id="previewContent">
+        <div class="preview-inner">
+          <div class="mini-mark">♡</div>
+          <div class="preview-meta">a little friendship test</div>
+          <h3 id="previewTitle">Насколько ты моя bestie?</h3>
+          <p id="previewIntro">Проверим, сколько маленьких деталей обо мне ты помнишь? ♡</p>
+          <button class="btn btn-primary" id="previewStart">Начать викторину →</button>
+        </div>
+      </div>
+      <div class="preview-bottom"><span>made with love</span><span>♡ 01 / 01</span></div>
+    </section>
+  </div>
+</main>
+<footer class="shell"><span>little things studio ©</span><span>made for your favourite people ♡</span></footer>
+<div class="toast hidden" id="toast"></div>
+<script>
+const palettes={
+ pink:{accent:'#cf6e98',ink:'#382632',blush:'#fbe7ef',line:'#f0dce6'},
+ lilac:{accent:'#8f78c6',ink:'#302744',blush:'#eee8fc',line:'#e2d9f3'},
+ peach:{accent:'#c9795c',ink:'#3d2b25',blush:'#fce9de',line:'#f3ddd0'},
+ sage:{accent:'#628b7d',ink:'#293b35',blush:'#e4f0e9',line:'#d7e7de'},
+ night:{accent:'#bd6f9b',ink:'#30202e',blush:'#f2dfea',line:'#e8d4e2'}
+};
+const defaults=[
+{q:'Что мы чаще всего делаем вместе?',a:['Болтаем обо всём','Скучаем молча','Ссоримся весь день','Делаем вид, что не знакомы'],correct:0},
+{q:'Какой у нас самый смешной общий прикол?',a:['Наш секретный мем','Серьёзные лекции','Уборка по расписанию','Обсуждение погоды'],correct:0},
+{q:'Что мы можем делать часами?',a:['Смеяться как ненормальные','Считать плитки на полу','Смотреть на часы','Обсуждать расписание'],correct:0},
+{q:'Что для меня важнее всего в дружбе?',a:['Честность и доверие','Популярность','Кто круче выглядит','Всегда быть правой'],correct:0},
+{q:'Если у меня плохое настроение, что поможет?',a:['Добрые слова и поддержка','Сделать вид, что ничего нет','Подшучивать надо мной','Сразу сменить тему'],correct:0},
+{q:'Как выглядит наш идеальный день?',a:['Вкусняшки, прогулка и разговоры','Сто дел без перерыва','Скучать по отдельности','Считать минуты до сна'],correct:0}
+];
+let qs=JSON.parse(JSON.stringify(defaults)), quiz=null, step=0, picked=[];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function read(){return {title:$('title').value.trim()||'Наша bestie-викторина',creator:$('creator').value.trim(),theme:$('theme').value,intro:$('intro').value.trim(),questions:qs.map(q=>({q:q.q,a:[...q.a],correct:+q.correct}))}}
+function toast(t){$('toast').textContent=t;$('toast').classList.remove('hidden');clearTimeout(window._toastTimer);window._toastTimer=setTimeout(()=>$('toast').classList.add('hidden'),2600)}
+function setPalette(name){let p=palettes[name]||palettes.pink;document.documentElement.style.setProperty('--rose',p.accent);document.documentElement.style.setProperty('--ink',p.ink);document.documentElement.style.setProperty('--blush',p.blush);document.documentElement.style.setProperty('--line',p.line);document.querySelectorAll('.btn-primary').forEach(b=>{b.style.background=p.ink});document.querySelectorAll('.mini-mark').forEach(m=>m.style.color=p.accent)}
+function renderQs(){
+ $('questions').innerHTML='';
+ qs.forEach((q,i)=>{let el=document.createElement('div');el.className='question-card';
+ el.innerHTML=`<div class="question-card-top"><span class="question-number">question ${String(i+1).padStart(2,'0')}</span><button class="delete-btn" data-del="${i}">Remove ×</button></div>
+ <input data-q="${i}" aria-label="Текст вопроса" value="${esc(q.q)}" placeholder="Твой вопрос…">
+ <div class="answers-edit">${q.a.map((a,j)=>`<input data-a="${i},${j}" aria-label="Вариант ответа ${j+1}" value="${esc(a)}" placeholder="Ответ ${j+1}">`).join('')}</div>
+ <label class="correct-label" for="correct-${i}">Правильный ответ</label><select id="correct-${i}" data-correct="${i}">${q.a.map((a,j)=>`<option value="${j}" ${+q.correct===j?'selected':''}>${j+1} — ${esc(a||'Ответ '+(j+1))}</option>`).join('')}</select>`;
+ $('questions').appendChild(el)})
+}
+function updatePreview(){let c=read();$('previewTitle').textContent=c.title;$('previewIntro').textContent=c.intro;setPalette(c.theme)}
+function showView(view){document.querySelector('.hero').classList.toggle('hidden',view==='quiz');document.querySelector('.marquee').classList.toggle('hidden',view==='quiz');$('builder').classList.toggle('hidden',view==='quiz');if(view!=='quiz')window.scrollTo({top:0,behavior:'smooth'})}
+function start(){quiz=read();if(!quiz.questions.length){toast('Добавь хотя бы один вопрос ♡');return}step=0;picked=Array(quiz.questions.length).fill(null);setPalette(quiz.theme);showView('quiz');renderQuiz();$('previewContent').innerHTML=`<div class="preview-inner quiz-card" id="live"></div>`;window.scrollTo({top:$('builder').offsetTop-15,behavior:'smooth'})}
+function renderQuiz(){
+ let q=quiz.questions[step];$('previewContent').innerHTML=`<div class="preview-inner quiz-card">
+ <div class="preview-meta">${esc(quiz.creator||'friendship quiz')}</div><div class="quiz-step">QUESTION ${String(step+1).padStart(2,'0')} / ${String(quiz.questions.length).padStart(2,'0')}</div>
+ <div class="progress"><span style="width:${step/quiz.questions.length*100}%"></span></div>
+ <div class="live-question">${esc(q.q)}</div><div class="live-answers">${q.a.map((a,j)=>`<button class="live-answer ${picked[step]===j?'chosen':''}" data-pick="${j}">${String.fromCharCode(65+j)}　${esc(a)}</button>`).join('')}</div>
+ <div class="quiz-controls"><button class="btn btn-light" id="back" ${step===0?'disabled':''}>← Назад</button><button class="btn btn-primary" id="next">${step===quiz.questions.length-1?'Узнать результат ♡':'Дальше →'}</button></div></div>`;
+ $('previewContent').querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{picked[step]=+b.dataset.pick;renderQuiz()}));
+ $('back').addEventListener('click',()=>{if(step>0){step--;renderQuiz()}});
+ $('next').addEventListener('click',()=>{if(picked[step]===null){toast('Выбери ответ ♡');return}if(step<quiz.questions.length-1){step++;renderQuiz()}else finish()})
+}
+function finish(){
+ let score=quiz.questions.reduce((n,q,i)=>n+(picked[i]===+q.correct?1:0),0),pct=Math.round(score/quiz.questions.length*100);
+ $('previewContent').innerHTML=`<div class="preview-inner"><div class="mini-mark">✳</div><div class="preview-meta">YOUR LITTLE RESULT</div><div class="result-title">${pct===100?'BESTIE НА МИЛЛИОН!':pct>=70?'Вы так хорошо знаете друг друга!':'Время узнать друг друга ещё лучше ♡'}</div><div class="result-number">${pct}%</div><p class="result-copy">Правильных ответов: ${score} из ${quiz.questions.length}. ${pct===100?'Вот это настоящая связь!':'Самое ценное — новые воспоминания, которые вы ещё создадите.'}</p><button class="btn btn-primary" id="retry">Пройти ещё раз ↻</button><p class="result-copy" style="margin-top:18px">little things ♡</p></div>`;
+ $('retry').addEventListener('click',()=>{step=0;picked=Array(quiz.questions.length).fill(null);renderQuiz()})
+}
+function encode(c){return btoa(unescape(encodeURIComponent(JSON.stringify(c)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function decode(s){try{let x=s.replace(/-/g,'+').replace(/_/g,'/');while(x.length%4)x+='=';return JSON.parse(decodeURIComponent(escape(atob(x))))}catch(e){return null}}
+async function copyLink(){let c=read();if(!c.questions.length){toast('Добавь хотя бы один вопрос ♡');return}let u=new URL(location.href);u.hash='quiz='+encode(c);try{await navigator.clipboard.writeText(u.href);toast('Ссылка скопирована! Отправь её подружке ♡')}catch(e){prompt('Скопируй ссылку:',u.href)}}
+$('questions').addEventListener('input',e=>{let t=e.target;if(t.dataset.q!==undefined)qs[+t.dataset.q].q=t.value;if(t.dataset.a!==undefined){let [i,j]=t.dataset.a.split(',').map(Number);qs[i].a[j]=t.value;let s=$('correct-'+i);let v=+s.value;s.innerHTML=qs[i].a.map((a,k)=>`<option value="${k}" ${k===v?'selected':''}>${k+1} — ${esc(a||'Ответ '+(k+1))}</option>`).join('')}updatePreview()});
+$('questions').addEventListener('change',e=>{if(e.target.dataset.correct!==undefined)qs[+e.target.dataset.correct].correct=+e.target.value;updatePreview()});
+$('questions').addEventListener('click',e=>{let b=e.target.closest('[data-del]');if(b){qs.splice(+b.dataset.del,1);renderQs();updatePreview()}});
+['title','creator','intro','theme'].forEach(id=>$(id).addEventListener('input',updatePreview));
+$('theme').addEventListener('change',updatePreview);
+$('add').addEventListener('click',()=>{qs.push({q:'Напиши свой вопрос…',a:['Вариант 1','Вариант 2','Вариант 3','Вариант 4'],correct:0});renderQs();updatePreview()});
+$('play').addEventListener('click',start);$('previewStart').addEventListener('click',start);$('copyLink').addEventListener('click',copyLink);
+$('scrollBuilder').addEventListener('click',()=>$('builder').scrollIntoView({behavior:'smooth'}));
+$('tryDemo').addEventListener('click',()=>{qs=JSON.parse(JSON.stringify(defaults));renderQs();updatePreview();start()});
+const incoming=location.hash.startsWith('#quiz=')?decode(location.hash.slice(6)):null;
+if(incoming&&Array.isArray(incoming.questions)&&incoming.questions.length){$('title').value=incoming.title||'Наша bestie-викторина';$('creator').value=incoming.creator||'';$('intro').value=incoming.intro||'';$('theme').value=incoming.theme||'pink';qs=incoming.questions;renderQs();updatePreview();start()}else{renderQs();updatePreview()}
+</script>
+</body>
+</html>
