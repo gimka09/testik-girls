@@ -188,13 +188,14 @@
 
     <script>
         const $ = document.querySelector.bind(document);
-        const palettes = {
-            pink: { accent: '#f43f5e', ink: '#755546', blush: '#fbcfe8', line: '#f1ebd8' },
-            lilac: { accent: '#8b5cf6', ink: '#3b2744', blush: '#ddd6fe', line: '#e2d9f3' },
-            peach: { accent: '#f97316', ink: '#4a3025', blush: '#ffedd5', line: '#f3ddd0' },
-            sage: { accent: '#10b981', ink: '#20332b', blush: '#a7f3d0', line: '#d2e7de' },
-            night: { accent: '#ec4899', ink: '#1e1b4b', blush: '#fbcfe8', line: '#cbd5e1' }
+                const palettes = {
+            pink: { accent: '#ff8da1', ink: '#4a1521', blush: '#fff0f3', line: '#ffe3e8' },      // Cherry blossom
+            lilac: { accent: '#b69eff', ink: '#21134a', blush: '#f5f3ff', line: '#e8e3ff' },     // Lavender dream
+            peach: { accent: '#ffb088', ink: '#4a2211', blush: '#fff5f0', line: '#ffe6db' },     // Peach milk
+            sage: { accent: '#8cd4b8', ink: '#0f3325', blush: '#f0fdf7', line: '#daf7ec' },      // Sage & cream
+            night: { accent: '#f472b6', ink: '#31102f', blush: '#fdf2f8', line: '#fce7f3' }      // Berry night
         };
+
 
         const defaults = [
             { q: "Что мы чаще всего делаем вместе?", a: ["Болтаем обо всём", "Скучаем молча", "Учимся весь день", "Делаем вид, что не знакомы"], correct: 0 },
@@ -280,39 +281,69 @@
         }
 
         function renderQuiz() {
-            let q = quiz_null.questions[step];
-            $('#previewContent').innerHTML = `<div class="preview-inner quiz-card">
-            <div class="preview-meta">${esc(quiz_null.creator)} // friendship quiz</div>
-            <div class="quiz-step">ВОПРОС ${(step + 1).toString().padStart(2, '0')} / ${quiz_null.questions.length.toString().padStart(2, '0')}</div>
-            <div class="quiz-progress"><div class="quiz-progress-bar" style="width: ${(step / quiz_null.questions.length) * 100}%"></div></div>
-            <h3 style="font-size: 18px; margin: 10px 0;">${esc(q.q)}</h3>
-            <div class="live-answers">${q.a.map((ans, j) => `<button class="live-answer ${picked[step] === j ? 'chosen' : ''}" data-pick="${j}"><span>${String.fromCharCode(65 + j)}.</span> ${esc(ans)}</button>`).join('')}</div>
-            <div class="quiz-controls">
-                <button class="btn btn-light" id="back" ${step === 0 ? 'disabled style="opacity:0.3;"' : ''}>Назад</button>
-                <button class="btn btn-primary" id="next">${step === quiz_null.questions.length - 1 ? 'Узнать результат' : 'Дальше'} →</button>
-            </div>
-            </div>`;
+    let q = quiz_null.questions[step];
+    $('#previewContent').innerHTML = `<div class="preview-inner quiz-card">
+    <div class="preview-meta">${esc(quiz_null.creator)} // friendship quiz</div>
+    <div class="quiz-step">ВОПРОС ${(step + 1).toString().padStart(2, '0')} / ${quiz_null.questions.length.toString().padStart(2, '0')}</div>
+    <div class="quiz-progress"><div class="quiz-progress-bar" style="width: ${(step / quiz_null.questions.length) * 100}%"></div></div>
+    <h3 style="font-size: 18px; margin: 10px 0;">${esc(q.q)}</h3>
+    <div class="live-answers">${q.a.map((ans, j) => `<button class="live-answer ${picked[step] === j ? 'chosen' : ''}" data-pick="${j}"><span>${String.fromCharCode(65 + j)}.</span> ${esc(ans)}</button>`).join('')}</div>
+    <div class="quiz-controls">
+        <button class="btn btn-light" id="back" ${step === 0 ? 'disabled style="opacity:0.3;"' : ''}>Назад</button>
+        <button class="btn btn-primary" id="next" style="color: var(--muted) !important; background: var(--rose) !important; font-weight: 700;">${step === quiz_null.questions.length - 1 ? 'Узнать результат' : 'Дальше'} →</button>
+    </div>
+    </div>`;
 
-            $('#previewContent').querySelectorAll('[data-pick]').forEach(b => {
-                b.addEventListener('click', (e) => {
-                    picked[step] = parseInt(e.currentTarget.dataset.pick);
-                    renderQuiz();
-                });
-            });
+    $('#previewContent').querySelectorAll('[data-pick]').forEach(b => {
+        b.addEventListener('click', (e) => {
+            picked[step] = parseInt(e.currentTarget.dataset.pick);
+            renderQuiz();
+        });
+    });
 
-            $('#back').addEventListener('click', () => { if (step > 0) { step--; renderQuiz(); } });
-            $('#next').addEventListener('click', () => {
-                if (picked[step] === null) { toast('Выбери ответ!'); return; }
-                if (step < quiz_null.questions.length - 1) { step++; renderQuiz(); } else { finish(); }
-            });
-        }
+    $('#back').addEventListener('click', () => { if (step > 0) { step--; renderQuiz(); } });
+    $('#next').addEventListener('click', () => {
+        if (picked[step] === null) { toast('Выбери ответ!'); return; }
+        if (step < quiz_null.questions.length - 1) { step++; renderQuiz(); } else { finish(); }
+    });
+}
 
-        function finish() {
-            let score = quiz_null.questions.reduce((n, q, i) => n + (picked[i] === q.correct ? 1 : 0), 0);
-            let pct = Math.round((score / quiz_null.questions.length) * 100);
-            $('#previewContent').innerHTML = `<div class="preview-inner"><div class="mini-mark">🎉</div><div class="preview-meta">YOUR RESULTS</div><h3 style="font-size:24px;">BESTIE НА ${pct}%!</h3><p>Ты хорошо знаешь меня! Поделись результатом с подругой.</p><button class="btn btn-primary" id="retry">Пройти еще раз</button></div>`;
-            $('#retry').addEventListener('click', () => { step = 0; picked = Array(quiz_null.questions.length).fill(null); renderQuiz(); });
-        }
+function finish() {
+    let score = quiz_null.questions.reduce((n, q, i) => n + (picked[i] === q.correct ? 1 : 0), 0);
+    let pct = Math.round((score / quiz_null.questions.length) * 100);
+    
+    let resultText = "Ты хорошо знаешь меня! Поделись результатом с подругой.";
+    let resultEmoji = "🎉";
+    
+    if (pct === 100) {
+        resultText = "Вау! Ты идеальная bestie, помнишь абсолютно всё! 🥹💞";
+        resultEmoji = "👑";
+    } else if (pct >= 70) {
+        resultText = "Отличный результат! Мы действительно близкие подружки. 🥰";
+        resultEmoji = "🌸";
+    } else if (pct >= 40) {
+        resultText = "Неплохо, но некоторые детали мы упустили. Давай поболтаем подольше! 👀";
+        resultEmoji = "🧸";
+    } else {
+        resultText = "Ой-ой... Кажется, нам пора встретиться и обновить наши секреты! 🙈";
+        resultEmoji = "💔";
+    }
+
+    $('#previewContent').innerHTML = `<div class="preview-inner">
+        <div class="mini-mark">${resultEmoji}</div>
+        <div class="preview-meta">YOUR RESULTS</div>
+        <h3 style="font-size:24px;">BESTIE НА ${pct}%!</h3>
+        <p>${resultText}</p>
+        <button class="btn btn-primary" id="retry" style="color: var(--muted) !important; background: var(--rose) !important; font-weight: 700; margin-top: 15px;">Пройти еще раз</button>
+    </div>`;
+    
+    $('#retry').addEventListener('click', () => { 
+        step = 0; 
+        picked = Array(quiz_null.questions.length).fill(null); 
+        renderQuiz(); 
+    });
+}
+
 
         function encode(c) { return btoa(unescape(encodeURIComponent(JSON.stringify(c)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, ''); }
         function decode(s) { try { return JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g, '+').replace(/_/g, '/'))))); } catch (e) { return null; } }
